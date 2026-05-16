@@ -1,0 +1,24 @@
+{
+  "colors": [
+    {
+      "name": "Black",
+      "hex": "#000000"
+    },
+    {
+      "name": "Navy",
+      "hex": "#000080"
+    },
+    {
+      "name": "Grey",
+      "hex": "#808080"
+    },
+    {
+      "name": "White",
+      "hex": "#FFFFFF"
+    },
+    {
+      "name": "Maroon",
+      "hex": "#800000"
+    }
+  ]
+}
