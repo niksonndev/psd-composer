@@ -2,13 +2,12 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "ExtendScript - Photoshop",
       "type": "extendscript-debug",
       "request": "launch",
-      "program": "${workspaceFolder}/composer.jsx",
-      "stopOnEntry": false,
-      "debugLevel": 1,
-      "engineName": "main"
+      "name": "ExtendScript - Photoshop",
+      "script": "${workspaceFolder}/composer.jsx",
+      "hostAppSpecifier": "photoshop",
+      "debugLevel": 1
     }
   ]
 }
