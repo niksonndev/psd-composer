@@ -16,13 +16,31 @@
 // ============================================================================
 
 var CONFIG = {
-  designName : "Iron-Aran",
-  pngPath    : "C:/psd-composer/assets/designs/iron-aran.png",
-  templatesDir: "C:/psd-composer/assets/templates",
-  outputDir  : "C:/psd-composer/assets/output",
-  colors     : ["Black", "Navy", "Grey", "White", "Maroon"],
+  // --- Identidade do design (vem do Airtable no pipeline real)
+  designName: "Iron-Aran",
+  artistName: "john-doe",
+  pngPath:    "C:/psd-composer/assets/designs/iron-aran.png",
 
-  // Nomes dos layers no PSD — ajusta conforme o PSD real do cliente
+  // --- Três batches independentes
+  batches: {
+    main: {
+      templatesDir: "C:/psd-composer/assets/templates/main",
+      outputDir:    "C:/psd-composer/assets/output/Iron-Aran/01 - ORIGINAL",
+    },
+    marketing: {
+      templatesDir: "C:/psd-composer/assets/templates/marketing",
+      outputDir:    "C:/psd-composer/assets/output/Iron-Aran/00 - MARKETING",
+    },
+    print: {
+      templatesDir: "C:/psd-composer/assets/templates/print",
+      outputDir:    "C:/psd-composer/assets/output/Iron-Aran/Print-Files",
+    }
+  },
+
+  // --- Cores tentadas em cada PSD (lidas do Airtable no pipeline real)
+  colors: ["Black", "Navy", "Grey", "White", "Maroon"],
+
+  // --- Convenção de layers nos PSDs do cliente (confirmar quando receber os arquivos)
   artworkLayerName: "ARTWORK",
   colorLayerPrefix: "COLOR_"
 };
