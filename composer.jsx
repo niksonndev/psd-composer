@@ -237,32 +237,38 @@ function main() {
   $.writeln("PSD Composer iniciado");
   $.writeln("Design : " + CONFIG.designName);
   $.writeln("PNG    : " + CONFIG.pngPath);
-  $.writeln("PSDs   : " + CONFIG.templatesDir);
-  $.writeln("Output : " + CONFIG.outputDir);
   $.writeln("Cores  : " + CONFIG.colors.join(", "));
   $.writeln("========================================\n");
 
-  // Garante que a pasta de output existe
-  ensureFolder(CONFIG.outputDir);
+  var batchNames = ["main", "marketing", "print"];
 
-  // Busca todos os PSDs na pasta de templates
-  var psdFiles = getPSDFiles(CONFIG.templatesDir);
-  if (psdFiles.length === 0) {
-    $.writeln("[ERRO] Nenhum PSD encontrado em: " + CONFIG.templatesDir);
-    return;
-  }
+  for (var b = 0; b < batchNames.length; b++) {
+    var batchName = batchNames[b];
+    var batch = CONFIG.batches[batchName];
 
-  $.writeln("PSDs encontrados: " + psdFiles.length + "\n");
+    $.writeln("\n════ Batch: " + batchName.toUpperCase() + " ════");
 
-  // Processa cada PSD
-  for (var i = 0; i < psdFiles.length; i++) {
-    processPSD(
-      psdFiles[i],
-      CONFIG.pngPath,
-      CONFIG.designName,
-      CONFIG.colors,
-      CONFIG.outputDir
-    );
+    ensureFolder(batch.outputDir);
+
+    var psdFiles = getPSDFiles(batch.templatesDir);
+    if (psdFiles.length === 0) {
+      $.writeln("[ERRO] Nenhum PSD encontrado em: " + batch.templatesDir);
+      continue; // pula esse batch mas continua os outros
+    }
+
+    $.writeln("PSDs encontrados: " + psdFiles.length);
+
+    for (var i = 0; i < psdFiles.length; i++) {
+      processPSD(
+        psdFiles[i],
+        CONFIG.pngPath,
+        CONFIG.designName,
+        CONFIG.colors,
+        batch.outputDir
+      );
+    }
+
+    $.writeln("════ Batch " + batchName.toUpperCase() + " concluído ════");
   }
 
   $.writeln("\n========================================");
